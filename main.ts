@@ -20,6 +20,7 @@ function doAsyncTask() {
         reject('error');
       } else {
         resolve('done');
+        console.log('aguardando...');
       }
     }, 1000);
   });
@@ -29,15 +30,3 @@ doAsyncTask().then(
   (val) => console.log(val),
   (err) => console.error(err)
 );
-
-// Immediately Resolved Promise
-let promise = Promise.resolve('done');
-promise.then((val) => console.log(val)); // 'done'
-
-// Handling Errors
-Promise.resolve('done')
-  .then((val) => {
-    throw new Error('fail');
-  })
-  .then((val) => console.log(val))
-  .catch((err) => console.error(err));
